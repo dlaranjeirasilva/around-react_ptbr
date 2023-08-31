@@ -1,6 +1,6 @@
 import closeIcon from '../images/close-icon.png';
 
-function PopupWithForm({title, name, submitButtonText, isOpen, onClose, children}) {
+function PopupWithForm({title, name, submitButtonText, isOpen, onClose, onSubmit, children}) {
   return(
     <section id={`modal-${name}`} className={`modal ${isOpen ? 'modal_opened' : ''}`}>
       <div className="modal__container">
@@ -11,7 +11,7 @@ function PopupWithForm({title, name, submitButtonText, isOpen, onClose, children
           alt="Ícone para fechar"
           onClick={onClose}
         />
-        <form id={`form-${name}`} className="form" noValidate>
+        <form id={`form-${name}`} className="form" noValidate onSubmit={onSubmit}>
           <h2 className="form__title">{title}</h2>
           {children}
           <button type="submit" className="form__button">

@@ -6,7 +6,7 @@ function Card({card, onCardClick}) {
     onCardClick(card);
   }
   return(
-    <ul id={card._id} className="card" onClick={handleClick}>
+    <ul id={card._id} className="card">
       <img
         src={garbageCan}
         alt="Lixeira"
@@ -16,6 +16,7 @@ function Card({card, onCardClick}) {
         src={card.link}
         alt={card.name}
         className="card__image"
+        onClick={handleClick}
       />
       <li className="card__info">
         <h2 className="card__title">{card.name}</h2>

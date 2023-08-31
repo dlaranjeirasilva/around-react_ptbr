@@ -3,7 +3,8 @@ import Main from './Main';
 import Footer from './Footer';
 import ImagePopup from './ImagePopup';
 import PopupWithForm from './PopupWithForm';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import api from '../utils/Api';
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
@@ -11,6 +12,17 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isDeletePopupOpen, setDeletePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null)
+  const [userData, setUserData] = useState({ name: '', about: '', avatar: '' });
+
+  useEffect(() => {
+    api.getUserInfo()
+      .then(data => {
+        setUserData({ name: data.name, about: data.about, avatar: data.avatar });
+      })
+      .catch((err) => {
+        console.error(`Error: ${err}`)
+      });
+  }, []);
 
   const handleEditAvatarClick = () => {
     setEditAvatarPopupOpen(true);
@@ -64,6 +76,7 @@ function App() {
             name="name"
             placeholder="Nome"
             required
+            defaultValue={userData.name}
             minLength="2"
             maxLength="40"
           />
@@ -75,6 +88,7 @@ function App() {
             name="about-me"
             placeholder="Sobre mim"
             required
+            defaultValue={userData.about}
             minLength="2"
             maxLength="80"
           />
@@ -129,6 +143,7 @@ function App() {
             name="avatar_url"
             placeholder="Link da imagem de avatar"
             required
+            defaultValue={userData.avatar}
           />
           <span className="form__input-error avatar-input-error"></span>
         </PopupWithForm>
