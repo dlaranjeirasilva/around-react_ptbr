@@ -1,42 +1,19 @@
 import pencilIcon from '../images/pencil-icon.svg';
-import api from '../utils/Api';
 import Card from './Card';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({
+  cards,
   onEditProfileClick,
   onAddPlaceClick,
   onEditAvatarClick,
   onDeleteClick,
+  onCardLike,
   onCardClick,
   children
 }) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api.getUserInfo()
-      .then(data => {
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
-      })
-      .catch((err) => {
-        console.error(`Error: ${err}`)
-      })
-  }, []);
-
-  useEffect(() => {
-    api.getInitialCards()
-      .then(cardData => {
-        setCards(cardData)
-      })
-      .catch((err) => {
-        console.error(`Error: ${err}`)
-      })
-  }, []);
+  const currentUser = useContext(CurrentUserContext);
 
   return(
     <main className="main">
@@ -47,7 +24,7 @@ function Main({
         <div className="profile__container">
           <div className="spinner"></div>
           <img
-          src={userAvatar}
+          src={currentUser.avatar}
           alt="Imagem de perfil do usuário"
             className="profile__avatar"
           />
@@ -59,8 +36,8 @@ function Main({
           />
         </div>
         <div className="profile-info">
-          <h2 className="profile-info__name">{userName}</h2>
-          <p className="profile-info__about-me">{userDescription}</p>
+          <h2 className="profile-info__name">{currentUser.name}</h2>
+          <p className="profile-info__about-me">{currentUser.about}</p>
           <img
             id="profile-modal"
             src={pencilIcon}
@@ -80,7 +57,13 @@ function Main({
 
       <section className="cards">
         {cards.map(card => (
-          <Card key={card._id} card={card} onCardClick={onCardClick}/>
+          <Card
+            key={card._id}
+            card={card}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onDeleteClick={onDeleteClick}
+          />
         ))}
       </section>
     </main>

@@ -1,16 +1,42 @@
 import garbageCan from '../images/garbage-can.png';
 import hollowHeart from '../images/hollow-heart.svg';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useContext } from 'react';
 
-function Card({card, onCardClick}) {
+function Card({
+  card,
+  onCardClick,
+  onCardLike,
+  onDeleteClick
+}) {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = card.owner._id === currentUser._id;
+  const cardDeleteButtonClassName = (
+    `card__garbage-can ${isOwn ? '' : 'card__garbage-can_hidden'}`
+  );
+  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  const cardLikeButtonClassName = `card__button ${isLiked ? 'card__button_active' : ''}`;
+  const cardLikeButtonAlt = isLiked ? 'Coração marcado' : 'Coração desmarcado';
+
   function handleClick() {
     onCardClick(card);
   }
+
+  function handleLikeClick() {
+    onCardLike(card);
+  }
+
+  function handleDeleteClick() {
+    onDeleteClick(card);
+  }
+
   return(
     <ul id={card._id} className="card">
       <img
         src={garbageCan}
         alt="Lixeira"
-        className="card__garbage-can"
+        className={cardDeleteButtonClassName}
+        onClick={handleDeleteClick}
       />
       <img
         src={card.link}
@@ -23,8 +49,9 @@ function Card({card, onCardClick}) {
         <div className="card__data">
           <img
             src={hollowHeart}
-            alt="Coração desmarcado"
-            className="card__button"
+            alt={cardLikeButtonAlt}
+            className={cardLikeButtonClassName}
+            onClick={handleLikeClick}
           />
           <p className="card__likes">{card.likes.length}</p>
         </div>
