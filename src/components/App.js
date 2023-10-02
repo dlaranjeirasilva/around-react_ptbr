@@ -8,7 +8,7 @@ import AddPlacePopup from './AddPlacePopup';
 import DeleteConfirmationPopup from './DeleteConfirmationPopup';
 import { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import api from '../utils/Api';
+import api from '../utils/api';
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
