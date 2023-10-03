@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/around-react_ptbr/static/css/main.1b833bd4.css",
-    "main.js": "/around-react_ptbr/static/js/main.c0b1637c.js",
-    "static/js/787.fae363fb.chunk.js": "/around-react_ptbr/static/js/787.fae363fb.chunk.js",
-    "static/media/hollow-heart.svg": "/around-react_ptbr/static/media/hollow-heart.99043841e8bec6b9df2129636ccf9f8c.svg",
-    "index.html": "/around-react_ptbr/index.html",
-    "static/media/filled-heart.svg": "/around-react_ptbr/static/media/filled-heart.f8482d28867cec189b08.svg",
-    "static/media/pencil-icon.svg": "/around-react_ptbr/static/media/pencil-icon.6c7bf05444b9793fdf6e73a2dd202e7e.svg",
-    "main.1b833bd4.css.map": "/around-react_ptbr/static/css/main.1b833bd4.css.map",
-    "main.c0b1637c.js.map": "/around-react_ptbr/static/js/main.c0b1637c.js.map",
-    "787.fae363fb.chunk.js.map": "/around-react_ptbr/static/js/787.fae363fb.chunk.js.map"
+    "main.css": "/web_project_around_react/static/css/main.a1f8ff54.css",
+    "main.js": "/web_project_around_react/static/js/main.3ce5939b.js",
+    "static/js/787.2cf11af0.chunk.js": "/web_project_around_react/static/js/787.2cf11af0.chunk.js",
+    "static/media/hollow-heart.svg": "/web_project_around_react/static/media/hollow-heart.99043841e8bec6b9df2129636ccf9f8c.svg",
+    "index.html": "/web_project_around_react/index.html",
+    "static/media/filled-heart.svg": "/web_project_around_react/static/media/filled-heart.f8482d28867cec189b08.svg",
+    "static/media/pencil-icon.svg": "/web_project_around_react/static/media/pencil-icon.6c7bf05444b9793fdf6e73a2dd202e7e.svg",
+    "main.a1f8ff54.css.map": "/web_project_around_react/static/css/main.a1f8ff54.css.map",
+    "main.3ce5939b.js.map": "/web_project_around_react/static/js/main.3ce5939b.js.map",
+    "787.2cf11af0.chunk.js.map": "/web_project_around_react/static/js/787.2cf11af0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b833bd4.css",
-    "static/js/main.c0b1637c.js"
+    "static/css/main.a1f8ff54.css",
+    "static/js/main.3ce5939b.js"
   ]
 }
